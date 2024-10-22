@@ -1,0 +1,457 @@
+/* Style général avec des couleurs fashion et cozy */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f7f2e7; /* Crème doux */
+    color: #4a4a4a; /* Gris foncé */
+    transition: background-color 0.3s ease;
+}
+
+.app-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff; /* Blanc pour un contraste doux */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.4s ease-in-out;
+}
+
+.app-container:hover {
+    transform: translateY(-5px);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #d74e24; /* Rouge orangé fashion */
+}
+
+h1 {
+    font-size: 3rem;
+    color: #6d4c41; /* Marron doux */
+    text-shadow: 1px 1px #f8bbd0; /* Rose pâle */
+    margin-bottom: 5px;
+}
+
+    .mood-selection {
+        margin-top: 80px; /* Ajustez la valeur pour l'espacement désiré */
+    }
+
+
+
+p {
+    font-size: 1.2rem;
+    margin-top: 0px;
+    margin-bottom: 80px;
+    color: #8d6e63; /* Taupe clair */
+}
+
+/* Aperçu de la tenue */
+.preview-box {
+    border: 3px dashed #d7ccc8; /* Marron pastel */
+    padding: 20px;
+    min-height: 100px;
+    background-color: #fff3e0; /* Crème très clair */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #6d4c41; /* Marron doux */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.preview-box:hover {
+    background-color: #ffe0b2; /* Beige clair */
+    color: #5d4037; /* Marron légèrement plus foncé */
+}
+
+/* Choix du genre */
+.gender-selection button {
+    padding: 10px 20px;
+    background: #d74e24; /* Rouge orangé fashion */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.gender-selection button:hover {
+    background-color: #d45e34; /* Un ton plus clair au survol */
+    transform: scale(1.1);
+}
+
+button[type="submit"] { /*le boutton "voir les articles"*/
+    background-color: #d2b48c; /* Marron pastel */
+    border: none; /* Retire les bordures par défaut */
+    color: white; /* Couleur du texte */
+    padding: 10px 20px; /* Ajuste l'espace à l'intérieur du bouton */
+    text-align: center; /* Centre le texte */
+    text-decoration: none; /* Retire les soulignements */
+    display: inline-block; /* Rend le bouton adaptable */
+    font-size: 16px; /* Taille du texte */
+    border-radius: 8px; /* Bordures arrondies pour un effet plus doux */
+    transition: background-color 0.3s ease; /* Effet de transition pour le hover */
+    width: 200px;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #b18a6e; /* Un marron plus foncé au survol */
+}
+
+/* Styles pour les catégories */
+.category h3 {
+    font-size: 1.8rem;
+    color: #d74e24; /* Rouge orangé */
+    text-shadow: 1px 1px #ffccbc; /* Rose pâle */
+    margin-bottom: 10px;
+}
+
+.subcategory h4 {
+    font-size: 1.4rem;
+    color: #bcaaa4; /* Marron pastel clair */
+}
+
+.clothing-item {
+    background: #fff;
+    border: 2px solid #d7ccc8; /* Marron pastel */
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.4s ease;
+    margin-bottom: 15px;
+}
+
+.clothing-item:hover {
+    transform: scale(1.05);
+    background-color: #ffccbc; /* Beige clair */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset Button */
+.reset-button {
+    padding: 12px 25px;
+    background: #6d4c41; /* Marron doux */
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.reset-button:hover {
+    background-color: #4a3b30; /* Marron plus foncé */
+    transform: translateY(-5px);
+}
+
+/* Bouton "Acheter" avec un style doux */
+.fun-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #d74e24; /* Rouge orangé fashion */
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+.fun-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: #bcaaa4; /* Marron pastel clair */
+    transition: all 0.6s ease;
+    border-radius: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.fun-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.fun-button:hover {
+    color: white;
+    background-color: #c15e47; /* Un ton plus clair au survol */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+    .clothes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+body {
+    background: url('https://example.com/path-to-your-background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+.category {
+    border-bottom: 2px dashed #d7ccc8; /* Bordure décorative */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.subcategory {
+    background-color: rgba(255, 255, 255, 0.8); /* Fond légèrement transparent */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.gender-selection i, .selection-section i {
+    transition: transform 0.3s;
+}
+.gender-selection button:hover i, .selection-section h2:hover i {
+    transform: scale(1.2);
+}
+.mood-selection {
+    margin: 20px 0;
+}
+
+.mood-selection form {
+    display: flex;
+    flex-direction: column;
+}
+
+.mood-selection label {
+    margin: 5px 0;
+}
+
+.clothing-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.clothing-image {
+    width: 100px; /* Ajuste la taille selon tes besoins */
+    height: auto;
+    border-radius: 10px;
+}
+
+.fun-button {
+    margin-top: 5px;
+    padding: 10px;
+    background-color: #d74e24; /* Change selon le design */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.clothing-item {
+    background: #ffffff;
+    border: 1px solid #d7ccc8;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clothing-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.clothing-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.clothing-item p {
+    font-size: 1.2rem;
+    color: #6d4c41;
+}
+
+.clothing-item .fun-button {
+    padding: 10px 15px;
+    background: #d74e24;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.clothing-item .fun-button:hover {
+    background-color: #c15e47;
+}
+.article-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.article-frame {
+    border: 2px solid #6d4c41; /* Couleur du cadre */
+    padding: 20px;
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour donner du relief */
+    background-color: #f9f9f9; /* Couleur de fond du cadre */
+    max-width: 600px; /* Largeur maximale de l'article */
+    text-align: center;
+}
+/* Style pour uniformiser la taille des cadres */
+.clothing-item {
+    width: 250px; /* Largeur fixe des cadres */
+    height: 400px; /* Hauteur fixe des cadres */
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+/* Style pour les images à l'intérieur des cadres */
+.clothing-item img {
+    width: 100%; /* L'image occupe toute la largeur du cadre */
+    height: auto;
+    max-height: 250px; /* Limiter la hauteur de l'image */
+    object-fit: cover; /* Remplir le cadre sans déformation */
+    margin-bottom: 10px;
+}
+
+/* Style pour le texte et les boutons à l'intérieur des cadres */
+.clothing-item p {
+    text-align: center;
+}
+
+.clothing-item button {
+    background-color: #ff5a00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: auto; /* Le bouton reste en bas */
+}
+/* Style pour uniformiser la taille des cadres */
+.clothing-item {
+    width: 250px; /* Largeur fixe des cadres */
+    height: 450px; /* Hauteur fixe des cadres */
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    text-align: center;
+}
+
+/* Style pour les images à l'intérieur des cadres */
+.clothing-item img {
+    width: 100%; /* L'image occupe toute la largeur du cadre */
+    height: 250px; /* Hauteur fixe pour les images */
+    object-fit: cover; /* Remplir le cadre sans déformation, en rognant si nécessaire */
+    margin-bottom: 10px;
+}
+
+/* Style pour le texte et les boutons à l'intérieur des cadres */
+.clothing-item p {
+    text-align: center;
+}
+
+.clothing-item button {
+    background-color: #ff5a00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 50px; /* Le bouton reste en bas */
+}
+
+.article-frame h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.article-frame img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px; /* Coins arrondis de l'image */
+    margin-bottom: 15px;
+}
+
+.article-frame p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+.article-frame {
+    border: 2px solid #6d4c41;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 20px; /* Espace entre les articles */
+    cursor: pointer; /* Change le curseur pour indiquer qu'il est cliquable */
+}
+
+.article-frame.selected {
+    border-color: #3b82f6; /* Change de couleur pour indiquer la sélection */
+    background-color: #eef2ff;
+}
+.articles-grid {
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: flex-start;  /* Alignement vertical des articles */
+    flex-wrap: wrap; /* Permet aux articles de revenir à la ligne si l'espace est insuffisant */
+    gap: 20px; /* Espace entre les articles */
+    margin-top: 20px; /* ajouter un peu de marge en haut */
+}
+
+.article-frame {
+    width: 300px; /* Largeur des cadres */
+    border: 2px solid #6d4c41;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+/* Ajustement des styles */
+.article-frame {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+

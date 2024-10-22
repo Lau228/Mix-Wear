@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mix & Wear</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+         /* Masquer les catégories homme et femme par défaut */
+         .category-homme, .category-femme {
+            display: none;
+        }
+        /* Styles pour les cadres et l'espacement */
+        .article-frame {
+            border: 2px solid #6d4c41;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .article-frame.selected {
+            border-color: #3b82f6;
+            background-color: #eef2ff;
+        }
+
+        .preview-box img {
+            max-width: 100px;
+            margin: 10px;
+        }
+
+        .reset-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Mix & Wear</h1>
+            <p>Trouvez de l'inspiration pour vos tenues idéales !</p>
+        </header>
+
+        <!-- Choix du genre -->
+        <div class="gender-selection">
+            <h2>Choisissez votre genre <i class="fas fa-user-friends"></i></h2>
+            <button onclick="setGender('Homme')">Homme <i class="fas fa-male"></i></button>
+            <button onclick="setGender('Femme')">Femme <i class="fas fa-female"></i></button>
+        </div>
+
+        <!-- Sélection d'humeur -->
+        <div class="mood-selection">
+            <h2>Quelle est votre humeur ?</h2>
+            <form id="moodForm">
+                <label>
+                    <input type="radio" name="mood" value="heureux(se)" required> Heureux(se)
+                </label>
+                <label>
+                    <input type="radio" name="mood" value="décontracté(e)"> Décontracté(e)
+                </label>
+                <label>
+                    <input type="radio" name="mood" value="sportif(ve)"> Sportif(ve)
+                </label>
+                <button type="submit">Voir les articles</button>
+
+            </form>
+        </div>
+
+        <!-- Aperçu de la tenue -->
+        <div class="preview-section">
+            <h2>Aperçu de la tenue</h2>
+            <div id="preview" class="preview-box">Aucune pièce sélectionnée.</div>
+            <div id="outfitPreview">
+                <!-- Les articles sélectionnés seront affichés ici -->
+                </div>
+                
+
+        <!-- Sélection des pièces de vêtements -->
+        <div class="selection-section">
+            <h2>Choisissez vos pièces</h2>
+
+             <!-- Section Hauts Femme -->
+             <div class="category category-femme" id="category-hauts-femme">
+                <h3>Hauts Femme</h3>
+                <div class="subcategory">
+                    <h4>Chemises Femme</h4>
+                    <div class="articles-grid">
+                        <div class="article-frame" onclick="selectItem('Chemise Femme 1', 'chemise_femme1.jpeg')">
+                            <h2>Chemise 1</h2>
+                            <img src="chemise_femme1.jpeg" alt="Chemise Femme 1">
+                            <p>Une chemise élégante pour toutes les occasions.</p> 
+                            <a href="https://www.lightinthebox.com/fr/p/femme-chemise-manche-courte-noir-ete-printemps_p11466986.html?currency=EUR&litb_from=bing_shopping&sku=1_36%7C2_287&country_code=FR&utm_source=bingshopping&utm_medium=cpc&utm_campaign=bingshopping&litb_from=bing_shopping&utm_source=bing_shopping&utm_medium=cpc&utm_campaignid=408726197&utm_adgroupid=1191871263663954&utm_targetid=pla-4575892545326589&msclkid=ca0dc2885a0a1c1050b7a59d13c3ce75" class="fun-button" target="_blank">Acheter</a>
+                        </div>
+                        <div class="article-frame" onclick="selectItem('Chemise Femme 2', 'chemise_femme2.jpeg')">
+                            <h2>Chemise 2</h2>
+                            <img src="chemise_femme2.jpeg" alt="Chemise Femme 2">
+                            <p>Un style décontracté mais chic.</p> 
+                            <a href="https://www.monoprix.fr/p/mode/blouses-chemises/chemise-manches-courtes-unie-en-lin-6574151.html?esl-k=bing%7cn%7cc80539419185079%7cme%7ck2332339040951841%7cp%7ct%7ca1288628965312506%7cg650193287&utm_source=bing&utm_medium=cpc&utm_campaign=SEA_Jellyfish_Bing_Shopping_mode&gclid=a871a94bdbd812ea1e74ce5e92119f78&gclsrc=3p.ds&&msclkid=a871a94bdbd812ea1e74ce5e92119f78&utm_term=2332339040951841&utm_content=Mini%20Prix%20(%20incontournables)" class="fun-button" target="_blank">Acheter</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subcategory">
+                    <h4>T-shirts Femme</h4>
+                    <div class="articles-grid">
+                        <div class="article-frame" onclick="selectItem('T-shirt Femme 1', 'tshirt_femme1.jpeg')">
+                            <h2>T-shirt 1</h2>
+                            <img src="tshirt_femme1.jpeg" alt="T-shirt Femme 1">
+                            <p>T-shirt basique pour le quotidien.</p> 
+                            <a href="https://www.kiabi.com/t-shirt-uni-en-jersey-bleu-marine_P621397C681039?utm_adgroup=FR+-+CAT+-+Femme+-+Medium+Revenue+-+Asset+A&utm_adgroupid=1253444560362234&utm_campaign=FR+-+SHP+-+Medium+-+PLA&utm_campaignid=650172461&utm_medium=cpc&utm_source=bing&utm_term=&gclid=c9719c036feb1787678ffb16214168f7&gclsrc=3p.ds&msclkid=c9719c036feb1787678ffb16214168f7&utm_content=FR%20-%20CAT%20-%20Femme%20-%20Medium%20Revenue%20-%20Asset%20A" class="fun-button" target="_blank">Acheter</a>
+                        </div>
+                        <div class="article-frame" onclick="selectItem('T-shirt Femme 2', 'tshirt_femme2.jpeg')">
+                            <h2>T-shirt 2</h2>
+                            <img src="tshirt_femme2.jpeg" alt="T-shirt Femme 2">
+                            <p>Parfait pour un look sportif.</p> 
+                            <a href="https://www.levi.com/FR/fr_FR/vetements/femme/tops-t-shirts/t-shirt-sportif-essential/p/A74190017?camp=SHB_DR_AO_LV_T-SHIRT_MAX_FR_ROAS_GLE_fr_PMAX-T-Shirts&gclid=c7411fdc7b4c121d521d78c934e4046e&gclsrc=3p.ds&msclkid=c7411fdc7b4c121d521d78c934e4046e" class="fun-button" target="_blank">Acheter</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subcategory">
+                    <h4>Sweatshirts Femme</h4>
+                    <div class="articles-grid">
+                        <div class="article-frame" onclick="selectItem('Sweatshirt Femme 1', 'sweatshirt_femme1.jpeg')">
+                            <h2>Sweatshirt 1</h2>
+                            <img src="sweatshirt_femme1.jpeg" alt="Sweatshirt Femme 1">
+                            <p>Un sweatshirt confortable pour les journées fraîches.</p> 
+                            <a href="https://www.zalando.fr/evenandodd-sweatshirt-orange-ev421j0go-h11.html" class="fun-button" target="_blank">Acheter</a>
+                        </div>
+                        <div class="article-frame" onclick="selectItem('Sweatshirt 2', 'sweatshirt2.jpeg')">
+                            <h2>Sweatshirt 2</h2>
+                            <img src="sweatshirt_femme2.jpeg" alt="Sweatshirt Femme 2">
+                            <p>Chaud et stylé, parfait pour l'hiver.</p> 
+                            <a href="https://www.zalando.fr/pullandbear-oversized-sweatshirt-lilac-puc21j17o-i11.html" class="fun-button" target="_blank">Acheter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Bas -->
+            <div class="category category-femme" id="category-bas-femme">
+                <h3>Bas Femme</h3>
+                <div class="subcategory">
+                    <h4>Pantalons Femme</h4>
+                    <div class="articles-grid">
+                        <div class="article-frame" onclick="selectItem('Pantalon Femme 1', 'pantalon_femme1.jpeg')">
+                            <h2>Pantalon 1</h2>
+                            <img src="pantalon_femme1.jpeg" alt="Pantalon Femme 1">
+                            <p>Pantalon en tissu léger pour un confort optimal.</p> 
+                            <a href="https://www.damart.fr/pantalon-ceinture-reglable-2-statures-69284-1.html?color_filterable=38431&bottom_size_label=35106&utm_source=bing&utm_medium=cpc&utm_campaign=BS+Shopping+Op%C3%A9co+Promo&msclkid=17056d032b7415bf9f5c0a15b5cc9c83&utm_term=4583451690538927&utm_content=Op%C3%A9co%20Promo" class="fun-button" target="_blank">Acheter</a>
+                        </div>
+                        <div class="article-frame" onclick="selectItem('Pantalon Femme 2', 'pantalon_femme2.jpeg')">
+                            <h2>Pantalon 2</h2>
+                            <img src="pantalon_femme2.jpeg" alt="Pantalon Femme 2">
+                            <p>Pantalon classique et élégant.</p> 
+                            <a href="https://www.bonprix.fr/produit/pantalon-palazzo-cotele-anthracite-chine-975464/" class="fun-button" target="_blank">Acheter</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subcategory">
+                    <h4>Jeans Femme</h4>
+                    <div class="articles-grid">
+                        <div class="article-frame" onclick="selectItem('Jean Femme 1', 'jean_femme1.jpeg')">
+                            <h2>Jean 1</h2>
+                            <img src="jean_femme1.jpeg" alt="Jean Femme 1">
+                            <p>Jean décontracté pour un look quotidien.</p> 
+                            <a href="https://www.projectxparis.com/fr/outlet/669-11713-jean-skinny-delave-a-bandes-femme-project-x-paris-f189003.html?msclkid=2c276d51493117478fd20a47d71bb32d&utm_source=bing&utm_medium=cpc&utm_campaign=%23FR_BING_Shopping%20-%20Marque&utm_term=4586406602867285&utm_content=Ad%20group%20%231#/15-couleur-bleu/28-taille-36" class="fun-button" target="_blank">Acheter</a>
+                        </div>
+                        <div class="article-frame" onclick="selectItem('Jean Femme 2', 'jean_femme2.jpeg')">
+                            <h2>Jean 2</h2>
+                            <img src="jean_femme2.jpeg" alt="Jean Femme 2">
+                            <p>Jean slim pour un style moderne.</p>
+                            <a href="https://www.bonprix.fr/produit/jean-large-a-enduction-metallisee-bleu-clair-denim-914502/" class="fun-button" target="_blank">Acheter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Section Accessoires -->
+<div class="category category-femme" id="category-accessoires-femme">
+    <h3>Accessoires Femme</h3>
+    <div class="subcategory">
+        <h4>Lunettes Femme</h4>
+        <div class="articles-grid">
+            <div class="article-frame" onclick="selectItem('Lunette Femme 1', 'lunette_femme1.jpeg')">
+                <h2>Lunette 1</h2>
+                <img src="lunette_femme1.jpeg" alt="Lunette Femme 1">
+                <p>Des lunettes stylées pour toutes vos sorties.</p>
+                <a href="https://www.ray-ban.com/france/lunettes-de-soleil/RB2140%20UNISEX%20original%20wayfarer%20classic-noir/805289126577" class="fun-button" target="_blank">Acheter</a>
+            </div>
+            <div class="article-frame" onclick="selectItem('Lunette 2', 'lunette2.jpeg')">
+                <h2>Lunette 2</h2>
+                <img src="lunette_femme2.jpeg" alt="Lunette Femme 2">
+                <p>Look tendance avec ces lunettes modernes.</p>
+                <a href="https://www.asos.com/fr/asos-design/asos-design-lunettes-de-soleil-en-metal-a-monture-carree-style-annees70-noir/prd/203978164?affid=16822&_77b99f438fc61687ddbdf857b6e7fcf6&channelref=product+search&ppcadref=291845242|1261140454346369|pla-4582420879360876&utm_source=bing&utm_medium=cpc&utm_campaign=291845242=&utm_content=1261140454346369&utm_term=&gclid=77b99f438fc61687ddbdf857b6e7fcf6&gclsrc=3p.ds&msclkid=77b99f438fc61687ddbdf857b6e7fcf6" class="fun-button" target="_blank">Acheter</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="subcategory">
+        <h4>Bijoux femme</h4>
+        <div class="articles-grid">
+            <div class="article-frame" onclick="selectItem('Bijou Femme 1', 'bijou_femme1.jpeg')">
+                <h2>Bijou 1</h2>
+                <img src="bijou_femme1.jpeg" alt="Bijou Femme 1">
+                <p>Bijou discret pour le quotidien.</p>
+                <a href="https://www.agatha.fr/fr_FR/p/bracelet-souple-beloved-argent-bleu-vert/02420775-708-TU.html" class="fun-button" target="_blank">Acheter</a>
+            </div>
+            <div class="article-frame" onclick="selectItem('Bijou Femme 2', 'bijou-femme2.jpeg')">
+                <h2>Bijou 2</h2>
+                <img src="bijou_femme2.jpeg" alt="Bijou Femme 2">
+                <p>Bijou chic pour les sorties</p>
+                <a href="https://fr.pandora.net/fr/colliers/colliers/colliers-avec-pendentifs/collier-halo-scintillant-rond/386240CZ.html#cgid=necklaces" class="fun-button" target="_blank">Acheter</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Section Hauts Homme -->
+<div class="category category-homme" id="category-hauts-homme">
+    <h3>Hauts Homme</h3>
+    <div class="subcategory">
+        <h4>Chemises Homme</h4>
+        <div class="articles-grid">
+            <div class="article-frame" onclick="selectItem('Chemise Homme 3', 'chemise_homme3.jpeg')">
+                <h2>Chemise 3</h2>
+                <img src="chemise_homme3.jpeg" alt="Chemise Homme 3">
+                <p>Une chemise élégante pour toutes les occasions.</p> 
+                <a href="https://www.olymp.com/fr_fr/Chemise/OLYMP-Casual/Surchemise/Marine/p/41926418" class="fun-button" target="_blank">Acheter</a>
+            </div>
+            <div class="article-frame" onclick="selectItem('Chemise Homme 4', 'chemise_homme4.jpeg')">
+                <h2>Chemise 4</h2>
+                <img src="chemise_homme4.jpeg" alt="Chemise Homme 4">
+                <p>Un style décontracté mais chic.</p> 
+                <a href="https://fr.tommy.com/chemise-coupe-standard-%C3%A0-drapeau-brod%C3%A9-mw0mw36824z00" class="fun-button" target="_blank">Acheter</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="subcategory">
+        <h4>T-shirts Homme</h4>
+        <div class="articles-grid">
+            <div class="article-frame" onclick="selectItem('T-shirt Homme 3', 'tshirt_homme3.jpeg')">
+                <h2>T-shirt 3</h2>
+                <img src="tshirt_homme3.jpeg" alt="T-shirt Homme 3">
+                <p>T-shirt basique pour le quotidien.</p> 
+                <a href="https://www.kiabi.com/t-shirt-uni-en-jersey-bleu-marine_P621397C681039?utm_adgroup=FR+-+CAT+-+Femme+-+Medium+Revenue+-+Asset+A&utm_adgroupid=1253444560362234&utm_campaign=FR+-+SHP+-+Medium+-+PLA&utm_campaignid=650172461&utm_medium=cpc&utm_source=bing&utm_term=&gclid=c9719c036feb1787678ffb16214168f7&gclsrc=3p.ds&msclkid=c9719c036feb1787678ffb16214168f7&utm_content=FR%20-%20CAT%20-%20Femme%20-%20Medium%20Revenue%20-%20Asset%20A" class="fun-button" target="_blank">Acheter</a>
+            </div>
+            <div class="article-frame" onclick="selectItem('T-shirt Homme 4', 'tshirt_homme4.jpeg')">
+                <h2>T-shirt 4</h2>
+                <img src="tshirt_homme4.jpeg" alt="T-shirt Homme 4">
+                <p>Parfait pour un look sportif.</p> 
+                <a href="https://www.cocorico.store/products/t-shirt-homme-sport-kaki-iconique" class="fun-button" target="_blank">Acheter</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="subcategory">
+        <h4>Sweatshirts Homme</h4>
+        <div class="articles-grid">
+            <div class="article-frame" onclick="selectItem('Sweatshirt Homme 3', 'sweatshirt_homme3.jpeg')">
+                <h2>Sweatshirt 3</h2>
+                <img src="sweatshirt_homme3.jpeg" alt="Sweatshirt Homme 3">
+                <p>Un sweatshirt confortable pour les journées fraîches.</p> 
+                <a href="https://www.zalando.fr/pullandbear-basic-round-neck-sweatshirt-beige-puc22s0vi-b11.html" class="fun-button" target="_blank">Acheter</a>
+            </div>
+            <div class="article-frame" onclick="selectItem('Sweatshirt Homme 4', 'sweatshirt_homme4.jpeg')">
+                <h2>Sweatshirt 4</h2>
+                <img src="sweatshirt_homme4.jpeg" alt="Sweatshirt Homme 4">
+                <p>Chaud et stylé, parfait pour l'hiver.</p> 
+                <a href="https://www.zalando.fr/boss-zetrust-sweatshirt-open-green-bb122s0cq-m12.html" class="fun-button" target="_blank">Acheter</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section Bas -->
+<div class="category category-homme" id="category-bas-homme">
+    <h3>Bas Homme</h3>
+    <div class="subcategory">
+        <h4>Pantalons Homme</h4>
+        <div class="articles-grid">
+            <div class="article-frame" onclick="selectItem('Pantalon Homme 3', 'pantalon_femme3.jpeg')">
+                <h2>Pantalon 3</h2>
+                <img src="pantalon_homme3.jpeg" alt="Pantalon Homme 3">
+                <p>Pantalon en tissu léger pour un confort optimal.</p> 
+                <a href="https://www.7days.fr/pantalon-homme-confortable-taille-elastique-k-34269-20208700.html?msclkid=2738501ac4da1edf84db370c760f8053&utm_source=bing&utm_medium=cpc&utm_campaign=%5BFR-fr%5D_%5BSP%5D_All%20Products&utm_term=4587231240041625&utm_content=%5BFR-fr%5D_%5BPMax%7CSP%5D_All%20Products#color=66&size=115" class="fun-button" target="_blank">Acheter</a>
+            </div>
+            <div class="article-frame" onclick="selectItem('Pantalon Homme 4', 'pantalon_homme4.jpeg')">
+                <h2>Pantalon Homme 2</h2>
+                <img src="pantalon_homme4.jpeg" alt="Pantalon Homme 4">
+                <p>Pantalon classique et élégant.</p> 
+                <a href="https://www.jules.com/fr-fr/l/pantalon/?adsPid=100546610515&utm_source=bing&utm_medium=cpc&utm_campaign=fr_shopping_tout-produit&utm_term=4583451673406178&utm_content=Bing%20-%20[Shop]%20Tout%20produit&gclid=96b7bef0dc3711a024c9d9e66ee2298b&at_medium=cpc&at_campaign=fr_shopping_tout-produit&at_platform=bing" class="fun-button" target="_blank">Acheter</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="subcategory">
+        <h4>Jeans Homme</h4>
+        <div class="articles-grid">
+            <div class="article-frame" onclick="selectItem('Jean Homme 3', 'jean_homme3.jpeg')">
+                <h2>Jean 3</h2>
+                <img src="jean_homme3.jpeg" alt="Jean Homme 3">
+                <p>Jean décontracté pour un look quotidien.</p> 
+                <a href="https://www.asos.com/fr/jack-jones/jack-jones-essentials-chris-jean-decontracte-avec-abrasions-bleu-clair-delave/prd/204718265?affid=16822&_9b00001d7cef16f1367b670bc1793abf&channelref=product+search&ppcadref=291845242|1261140454346369|pla-4582420879360876&utm_source=bing&utm_medium=cpc&utm_campaign=291845242=&utm_content=1261140454346369&utm_term=&gclid=9b00001d7cef16f1367b670bc1793abf&gclsrc=3p.ds&msclkid=9b00001d7cef16f1367b670bc1793abf" class="fun-button" target="_blank">Acheter</a>
+            </div>
+            <div class="article-frame" onclick="selectItem('Jean Homme 4', 'jean_homme4.jpeg')">
+                <h2>Jean 4</h2>
+                <img src="jean_homme4.jpeg" alt="Jean Homme 4">
+                <p>Jean loose pour un style moderne.</p>
+                <a href="https://www.jules.com/fr-fr/l/jeans/?adsPid=100551811234&utm_source=bing&utm_medium=cpc&utm_campaign=fr_shopping_tout-produit&utm_term=4583451673406179&utm_content=Bing%20-%20[Shop]%20Tout%20produit&gclid=c5eb802c0fa41c166132e73ab1861f08&at_medium=cpc&at_campaign=fr_shopping_tout-produit&at_platform=bing" class="fun-button" target="_blank">Acheter</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Section Accessoires -->
+ <div class="category category-homme" id="category-accessoires-homme">
+    <h3>Accessoires Homme</h3>
+    <div class="subcategory">
+        <h4>Lunettes Homme</h4>
+        <div class="articles-grid">
+            <div class="article-frame" onclick="selectItem('Lunette Homme 3', 'lunette_homme3.jpeg')">
+
+                <h2>Lunette 3</h2>
+                <img src="lunette_homme3.jpeg" alt="Lunette Homme 3">
+                <p>Des lunettes stylées pour toutes vos sorties.</p>
+                <a href="https://www.optic2000.com/lunettes-de-soleil/nos-modeles/champion-ch2309-dore.html" class="fun-button" target="_blank">Acheter</a>
+            </div>
+            <div class="article-frame" onclick="selectItem('Lunette Homme 4', 'lunette_homme4.jpeg')">
+
+                <h2>Lunette 4</h2>
+                <img src="lunette_homme4.jpeg" alt="Lunette Homme 4">
+                <p>Look tendance avec ces lunettes modernes.</p>
+                <a href="https://www.ray-ban.com/france/lunettes-de-soleil/RB3732rb3732-or%20rose/8056262042328" class="fun-button" target="_blank">Acheter</a>
+            </div>
+        </div>
+    </div>
+
+<div class="subcategory">
+<h4>Bijoux Homme</h4>
+<div class="articles-grid">
+<div class="article-frame" onclick="selectItem('Bijou Homme 3', 'bijou_homme3.jpeg')">
+    <h2>Bijou 3</h2>
+    <img src="bijou_homme3.jpeg" alt="Bijou Homme 3">
+    <p>Bijou singulier pour le quotidien.</p>
+    <a href="https://www.holzkern.com/fr/collier-planarity-lapi-lazuli-argent.html?utm_source=bing-shopping&utm_medium=cpc&utm_campaign=fr-generic-jewelry&msclkid=0a83847616351587a479e360d78974f6" class="fun-button" target="_blank">Acheter</a>
+</div>
+<div class="article-frame" onclick="selectItem('Bijou Homme 4', 'bijou_homme4.jpeg')">
+    <h2>Bijou 4</h2>
+    <img src="bijou_homme4.jpeg" alt="Bijou Homme 4">
+    <p>Bijou chic pour les sorties</p>
+    <a href="https://www.fossil.com/fr-fr/products/bracelet-chaine-harlow-linear-texture-en-acier-inoxydable--dore/JF04698710.html" class="fun-button" target="_blank">Acheter</a>
+</div>
+</div>
+</div>
+</div>
+<script>
+    function setGender(gender) {
+        // Cacher toutes les catégories au départ
+        document.querySelectorAll('.category-homme, .category-femme').forEach(category => {
+            category.style.display = 'none'; // Masquer toutes les catégories
+        });
+
+        // Afficher uniquement les articles correspondant au genre sélectionné
+        if (gender === 'Homme') {
+            document.querySelectorAll('.category-homme').forEach(category => {
+                category.style.display = 'block'; // Afficher les articles Homme
+            });
+        } else if (gender === 'Femme') {
+            document.querySelectorAll('.category-femme').forEach(category => {
+                category.style.display = 'block'; // Afficher les articles Femme
+            });
+        }
+    }
+</script>
+</div>
+            <button class="reset-button" onclick="resetSelection()">Réinitialiser</button>
+    </div>
+
+    <!-- Script JavaScript à insérer juste avant </body> -->
+    <script>
+        let selectedItems = [];
+
+        function selectItem(itemName, itemImage) {
+            selectedItems.push({ name: itemName, image: itemImage });
+            updatePreview();
+        }
+
+        function updatePreview() {
+            const previewContainer = document.getElementById('preview');
+            previewContainer.innerHTML = ''; // Vider l'aperçu actuel
+
+            if (selectedItems.length === 0) {
+                previewContainer.innerHTML = 'Aucune pièce sélectionnée.'; // Message par défaut
+            } else {
+                selectedItems.forEach(item => {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = item.image; // Utiliser l'image de l'article
+                    imgElement.alt = item.name;
+                    imgElement.style.maxWidth = '100px'; // Optionnel : limiter la taille des images
+                    previewContainer.appendChild(imgElement);
+                });
+            }
+        }
+
+        function resetSelection() {
+            selectedItems = [];
+            updatePreview();
+        }
+    </script>
+    </body>
+    </html>
